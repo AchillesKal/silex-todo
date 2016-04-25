@@ -1,0 +1,10 @@
+{
+    "name": "achilleskal/silex-todo",
+    "authors": [
+        {
+            "name": "Achilles Kaloeridis",
+            "email": "achilleas90gr@gmail.com"
+        }
+    ],
+    "require": {}
+}
