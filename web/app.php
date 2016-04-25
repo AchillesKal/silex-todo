@@ -21,15 +21,7 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), array(
     'translator.domains' => array(),
 ));
 
-$app->get('/', function () use ($app){
-        return $app['twig']->render('index.html.twig');
-})->bind('homepage');
-
-$app->get('/todo/{id}', function ($id) use ($app){
-        return $id;
-})->bind('new_todo');
-
-$app->match('/form', function (Request $request) use ($app) {
+$app->match('/', function (Request $request) use ($app) {
         // some default data for when the form is displayed the first time
         $data = array(
             'name' => 'Your name',
@@ -43,17 +35,20 @@ $app->match('/form', function (Request $request) use ($app) {
 
         $form->handleRequest($request);
 
-//        if ($form->isValid()) {
-//                $data = $form->getData();
-//
-//                // do something with the data
-//
-//                // redirect somewhere
-//                return 'vrel';
-//        }
+        if ($form->isValid()) {
+                $data = $form->getData();
+
+                return $app->redirect('/');
+        }
 
         // display the form
         return $app['twig']->render('index.html.twig', array('form' => $form->createView()));
-});
+})->bind('homepage');;
+
+$app->get('/todo/{id}', function ($id) use ($app){
+        return $id;
+})->bind('new_todo');
+
+
 
 $app->run();
