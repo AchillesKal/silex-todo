@@ -6,10 +6,10 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Todo\Form\Type\TodoType;
 
-class DefaultController
+class TodoController
 {
 
-    public function indexAction(Request $request, Application $app)
+    public function listAction(Request $request, Application $app)
     {
 
         $form = $app['form.factory']->createBuilder(TodoType::class)
@@ -18,13 +18,25 @@ class DefaultController
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
             $data = $form->getData();
+            $app['repository.task']->sava($data);
 
             return $app->redirect($app['url_generator']->generate('homepage'));
         }
 
         // display the form
         return $app['twig']->render('index.html.twig', array('form' => $form->createView()));
+    }
+
+    public function showAction($id)
+    {
+        return 'The id is '.$id;
+    }
+
+    public function newAction(Request $request, Application $app)
+    {
+        return 'The id is ';
     }
 
 }

@@ -18,9 +18,17 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), array(
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
     'db.options' => array(
         'driver'   => 'pdo_sqlite',
-        'path'     => __DIR__.'/../app/app.db',
+        'path'     => __DIR__.'/app.db',
     ),
 ));
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
+
+$app['repository.task'] = $app->share(function ($app) {
+    return new Todo\Repository\TodoRepository($app['db']);
+});
+
+$app->register(new Silex\Provider\MonologServiceProvider(), array(
+    'monolog.logfile' => __DIR__.'/var/development.log',
+));
 
 return $app;
