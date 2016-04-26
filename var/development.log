@@ -1,0 +1,3 @@
+[2016-04-26 15:56:24] myapp.INFO: Matched route "homepage". {"route_parameters":{"_controller":"Todo\\Controller\\TodoController::listAction","_route":"homepage"},"request_uri":"http://localhost:8000/"} []
+[2016-04-26 15:56:24] myapp.INFO: > GET / [] []
+[2016-04-26 15:56:24] myapp.INFO: < 200 [] []

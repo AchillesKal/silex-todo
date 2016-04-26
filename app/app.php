@@ -28,7 +28,7 @@ $app['repository.task'] = $app->share(function ($app) {
 });
 
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
-    'monolog.logfile' => __DIR__.'/var/development.log',
+    'monolog.logfile' => __DIR__.'/../var/development.log',
 ));
 
 return $app;
