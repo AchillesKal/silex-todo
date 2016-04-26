@@ -4,8 +4,7 @@ namespace Todo\Controller;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Todo\Form\Type\TodoType;
 
 class DefaultController
 {
@@ -13,13 +12,8 @@ class DefaultController
     public function indexAction(Request $request, Application $app)
     {
 
-        $data = array(
-            'task' => 'Task',
-        );
-        $form = $app['form.factory']->createBuilder(FormType::class, $data)
-            ->add('task', TextType::class)
+        $form = $app['form.factory']->createBuilder(TodoType::class)
             ->getForm();
-
 
         $form->handleRequest($request);
 
@@ -31,7 +25,6 @@ class DefaultController
 
         // display the form
         return $app['twig']->render('index.html.twig', array('form' => $form->createView()));
-
     }
 
 }
