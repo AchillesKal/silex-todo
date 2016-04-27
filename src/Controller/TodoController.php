@@ -6,6 +6,7 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Todo\Entity\Task;
 use Todo\Form\Type\TodoType;
+use Todo\Form\Type\TodoEditType;
 
 class TodoController
 {
@@ -39,15 +40,44 @@ class TodoController
         $task = $app['repository.task']->findOneById($id);
 
         if(!$task){
-            return 'Not cewl';die;
+            return 'Not cewl';
         }
 
         return $app['twig']->render('show.html.twig', array('task'=>$task ));
     }
 
-    public function newAction(Request $request, Application $app)
+    public function editAction($id, Application $app, Request $request)
     {
-        return 'The id is ';
+        $task = $app['repository.task']->findOneById($id);
+
+        $form = $app['form.factory']->createBuilder(TodoEditType::class, $task)
+            ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+
+            $data = $form->getData();
+
+            $task->setName($data->getName());
+            $task->setDescription($data->getDescription());
+            $task->setIsDone($data->getIsDone());
+
+            $app['repository.task']->save($task);
+
+            return $app->redirect($app['url_generator']->generate('homepage'));
+        }
+
+        return $app['twig']->render('edit.html.twig', array('editForm' => $form->createView()));
+    }
+
+    public function deleteAction($id, Application $app)
+    {
+        $task = $app['repository.task']->findOneById($id);
+
+        $app['repository.task']->delete($task);
+
+        return $app->redirect($app['url_generator']->generate('homepage'));
     }
 
 }

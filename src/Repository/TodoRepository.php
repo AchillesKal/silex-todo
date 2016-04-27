@@ -31,7 +31,7 @@ class TodoRepository
             'is_done' => $task->getIsDone(),
         );
         if ($task->getId()) {
-            $this->db->update('tasks', $taskData, array('task_id' => $task->getId()));
+            $this->db->update('tasks', $taskData, array('id' => $task->getId()));
         }
         else {
             $this->db->insert('tasks', $taskData);
@@ -49,7 +49,6 @@ class TodoRepository
         $stmt->execute();
         $tasksData = $stmt->fetch();
         $task = $this->buildTask($tasksData);
-
         return $task;
     }
 
@@ -66,12 +65,17 @@ class TodoRepository
         return $tasks;
     }
 
+    public function delete($task)
+    {
+        return $this->db->delete('tasks', array('id' => $task->getId()));
+    }
+
     private function buildTask($taskData)
     {
         $task = new Task();
         $task->setId($taskData['id']);
         $task->setName($taskData['name']);
-        $task->setDescription(['description']);
+        $task->setDescription($taskData['description']);
         $task->setIsDone($taskData['is_done']);
 
         return $task;
