@@ -17,7 +17,7 @@ class TodoEditType extends AbstractType
             ->add('name', TextType::class)
             ->add('description', TextType::class)
             ->add('is_done', TextType::class)
-            ->add('add', SubmitType::class)
+            ->add('edit', SubmitType::class)
         ;
     }
 
