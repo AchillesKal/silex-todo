@@ -9,7 +9,6 @@ use Todo\Form\Type\TodoType;
 
 class TodoController
 {
-
     public function listAction(Request $request, Application $app)
     {
         $tasks = $app['repository.task']->findAll();
@@ -35,9 +34,15 @@ class TodoController
         return $app['twig']->render('index.html.twig', array('form' => $form->createView(), 'tasks'=>$tasks ));
     }
 
-    public function showAction($id)
+    public function showAction($id, Application $app)
     {
-        return 'The id is '.$id;
+        $task = $app['repository.task']->findOneById($id);
+
+        if(!$task){
+            return 'Not cewl';die;
+        }
+
+        return $app['twig']->render('show.html.twig', array('task'=>$task ));
     }
 
     public function newAction(Request $request, Application $app)

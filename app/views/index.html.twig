@@ -18,11 +18,10 @@
         {% for task in tasks %}
             <tr>
                 <th scope="row">{{ task.id }}</th>
-                <td>{{ task.name }}</td>
+                <td><a href="{{ path('show_todo', { 'id': task.id }) }}">{{ task.name }}</a></td>
                 <td>{{ task.isDone }}</td>
             </tr>
         {% endfor %}
-
        </tbody>
     </table>
 {% endblock %}

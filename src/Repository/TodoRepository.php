@@ -41,6 +41,18 @@ class TodoRepository
         }
     }
 
+    public function findOneById($id)
+    {
+        $sql = "SELECT * FROM tasks WHERE id = :id";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindValue("id", $id);
+        $stmt->execute();
+        $tasksData = $stmt->fetch();
+        $task = $this->buildTask($tasksData);
+
+        return $task;
+    }
+
     public function findAll()
     {
         $tasksData = $this->db->fetchAll('SELECT * FROM tasks');
