@@ -16,10 +16,14 @@ $app->register(new Silex\Provider\TranslationServiceProvider(), array(
     'translator.domains' => array(),
 ));
 $app->register(new Silex\Provider\DoctrineServiceProvider(), array(
-    'db.options' => array(
-        'driver'   => 'pdo_sqlite',
-        'path'     => __DIR__.'/app.db',
-    ),
+    'db.options' => array (
+        'driver'    => 'pdo_mysql',
+        'host'      => 'localhost',
+        'dbname'    => 'silextodo_db',
+        'user'      => 'root',
+        'password'  => '',
+        'charset'   => 'utf8mb4',
+        )
 ));
 $app->register(new Silex\Provider\UrlGeneratorServiceProvider());
 

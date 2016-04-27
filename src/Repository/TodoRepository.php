@@ -41,5 +41,28 @@ class TodoRepository
         }
     }
 
+    public function findAll()
+    {
+        $tasksData = $this->db->fetchAll('SELECT * FROM tasks');
+
+        $tasks = array();
+        foreach ($tasksData as $taskData) {
+            $taskId = $taskData['id'];
+            $tasks[$taskId] = $this->buildTask($taskData);
+        }
+
+        return $tasks;
+    }
+
+    private function buildTask($taskData)
+    {
+        $task = new Task();
+        $task->setId($taskData['id']);
+        $task->setName($taskData['name']);
+        $task->setDescription(['description']);
+        $task->setIsDone($taskData['is_done']);
+
+        return $task;
+    }
 
 }

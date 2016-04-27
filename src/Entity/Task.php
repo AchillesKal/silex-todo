@@ -9,9 +9,9 @@ class Task
 
     private $name;
 
-    private $description;
+    private $description = 'No Description';
 
-    private $is_done;
+    private $is_done = '1';
 
     /**
      * @return mixed
