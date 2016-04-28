@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class TodoEditType extends AbstractType
 {
@@ -16,7 +17,7 @@ class TodoEditType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('description', TextType::class)
-            ->add('is_done', TextType::class)
+            ->add('is_done', CheckboxType::class)
             ->add('edit', SubmitType::class)
         ;
     }

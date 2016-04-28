@@ -17,7 +17,7 @@
         <tbody>
         {% for task in tasks %}
             <tr>
-                <th scope="row">{{ task.id }}</th>
+                <th scope="row">{{ loop.index }}</th>
                 <td><a href="{{ path('show_todo', { 'id': task.id }) }}">{{ task.name }}</a></td>
                 <td>{{ task.isDone }}</td>
             </tr>

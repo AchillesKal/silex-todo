@@ -31,7 +31,6 @@ class TodoController
             return $app->redirect($app['url_generator']->generate('homepage'));
         }
 
-        // display the form
         return $app['twig']->render('index.html.twig', array('form' => $form->createView(), 'tasks'=>$tasks ));
     }
 
