@@ -7,3 +7,23 @@
 .todo--links{
     text-align: right;
 }
+
+.todo-name{
+    width: 80%;
+    display:inline-block;
+    float: left;
+}
+.todo-submit{
+    width: 19%;
+    display:inline-block;
+    margin-top: 25px;
+    float: left;
+}
+.todo-submit button{
+    width: 100%;
+}
+
+.todo-form{
+    margin-bottom: 40px;
+    overflow: auto;
+}

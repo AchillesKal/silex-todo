@@ -14,6 +14,7 @@ class TodoType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, array(
+                'label' => 'Task',
                 'attr' => array('class'=>'form-control col-md-6')
             ))
             ->add('add', SubmitType::class, array(

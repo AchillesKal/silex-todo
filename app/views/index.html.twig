@@ -2,8 +2,16 @@
 {% block content %}
 
     <h1 class="text-center">Simple Silex Todo App</h1>
-    <form action="" method="post">
-        {{ form_widget(form) }}
+    <form class="todo-form" method="post">
+        {{ form_errors(form) }}
+        <div class="todo-name">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="todo-submit">
+            {{ form_row(form.add) }}
+        </div>
+
+        {{ form_rest(form) }}
     </form>
 
     <table class="table">
