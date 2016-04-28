@@ -15,3 +15,6 @@ $app->match('/todo/{id}/edit', 'Todo\Controller\TodoController::editAction')
 $app->match('/todo/{id}/delete', 'Todo\Controller\TodoController::deleteAction')
     ->bind('delete_todo');
 
+$app->match('/about', 'Todo\Controller\TodoController::aboutAction')
+    ->bind('about');
+

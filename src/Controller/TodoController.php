@@ -79,4 +79,9 @@ class TodoController
         return $app->redirect($app['url_generator']->generate('homepage'));
     }
 
+    public function aboutAction(Application $app)
+    {
+        return $app['twig']->render('about.html.twig');
+    }
+
 }

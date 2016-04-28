@@ -1,0 +1,9 @@
+@media (min-width: 811px) {
+    .container{
+        width:810px;
+    }
+}
+
+.todo--links{
+    text-align: right;
+}

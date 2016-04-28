@@ -1,5 +1,7 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
+
+    <h1 class="text-center">Simple Silex Todo App</h1>
     <form action="" method="post">
         {{ form_widget(form) }}
     </form>
@@ -18,7 +20,7 @@
                 <th scope="row">{{ loop.index }}</th>
                 <td><a href="{{ path('show_todo', { 'id': task.id }) }}">{{ task.name }}</a></td>
                 <td>{{ task.isDone }}</td>
-                <td>
+                <td class="todo--links">
                     <a href="{{ path('edit_todo', {'id': task.id}) }}" class="btn btn-warning">Edit</a>
                     <a href="{{ path('delete_todo', {'id': task.id}) }}" class="btn btn-danger">Delete</a>
                 </td>
