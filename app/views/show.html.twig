@@ -1,4 +1,7 @@
 {% extends 'layout.html.twig' %}
+
+{% block title %}{{ task.name }} | SilexTodo - AchillesKal{% endblock %}
+
 {% block content %}
     <h1>{{ task.name }}</h1>
     <div>{{ task.description }}</div>

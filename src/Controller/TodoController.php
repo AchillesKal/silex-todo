@@ -67,7 +67,7 @@ class TodoController
             return $app->redirect($app['url_generator']->generate('homepage'));
         }
 
-        return $app['twig']->render('edit.html.twig', array('editForm' => $form->createView()));
+        return $app['twig']->render('edit.html.twig', array('editForm' => $form->createView(), 'task'=>$task));
     }
 
     public function deleteAction($id, Application $app)
