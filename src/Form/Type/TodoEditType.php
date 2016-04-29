@@ -17,7 +17,9 @@ class TodoEditType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('description', TextType::class)
-            ->add('is_done', CheckboxType::class)
+            ->add('is_done', CheckboxType::class, array(
+                'required'    => false,
+            ))
             ->add('edit', SubmitType::class)
         ;
     }

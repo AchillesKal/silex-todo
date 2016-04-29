@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class TodoType extends AbstractType
 {
@@ -21,6 +22,13 @@ class TodoType extends AbstractType
                 'attr' => array('class'=>'btn btn-primary col-md-2')
             ))
         ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
+            'data_class' => 'Todo\Entity\Task',
+        ));
     }
 
 }

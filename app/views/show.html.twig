@@ -5,7 +5,7 @@
 {% block content %}
     <h1>{{ task.name }}</h1>
     <div>{{ task.description }}</div>
-    <div>{{ task.isDone }}</div>
+    <div>is done: {{ task.isDone }}</div>
 
     <a href="{{ path('edit_todo', {'id': task.id}) }}" class="btn btn-warning">Edit</a>
     <a href="{{ path('delete_todo', {'id': task.id}) }}" class="btn btn-danger">Delete</a>

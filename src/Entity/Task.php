@@ -9,9 +9,9 @@ class Task
 
     private $name;
 
-    private $description = 'No Description';
+    private $description = 'No description';
 
-    private $is_done = 0;
+    private $is_done = false;
 
     /**
      * @return mixed
@@ -66,10 +66,10 @@ class Task
      */
     public function getIsDone()
     {
-        if ($this->is_done===1) {
-            return TRUE;
+        if($this->is_done == "0"){
+            return false;
         }
-        return FALSE;
+        return true;
     }
 
     /**
@@ -77,11 +77,7 @@ class Task
      */
     public function setIsDone($is_done)
     {
-
-        if ($is_done===1) {
-            $this->is_done = 1;
-        }
-        $this->is_done = 0;
+        $this->is_done = $is_done;
     }
 
 }

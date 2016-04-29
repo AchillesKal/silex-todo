@@ -19,13 +19,9 @@ class TodoController
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
-            $data = $form->getData();
-
-            $task = new Task();
-            $task->setName($data['name']);
-
+            $task = $form->getData();
             $app['repository.task']->save($task);
 
             return $app->redirect($app['url_generator']->generate('homepage'));
@@ -54,7 +50,7 @@ class TodoController
 
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $data = $form->getData();
 

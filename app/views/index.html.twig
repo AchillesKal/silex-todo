@@ -30,7 +30,13 @@
             <tr>
                 <th scope="row">{{ loop.index }}</th>
                 <td><a href="{{ path('show_todo', { 'id': task.id }) }}">{{ task.name }}</a></td>
-                <td>{{ task.isDone }}</td>
+                <td>
+                    {% if task.isDone == 0 %}
+                        <i class="fa fa-times fa-2x" aria-hidden="true"></i>
+                    {% else %}
+                        <i class="fa fa-check fa-2x" aria-hidden="true"></i>
+                    {% endif %}
+                </td>
                 <td class="todo--links">
                     <a href="{{ path('edit_todo', {'id': task.id}) }}" class="btn btn-warning">Edit</a>
                     <a href="{{ path('delete_todo', {'id': task.id}) }}" class="btn btn-danger">Delete</a>
