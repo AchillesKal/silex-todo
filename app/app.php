@@ -36,6 +36,10 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../app/views',
 ));
 
+$app['task.counter'] = $app->share(function ($app) {
+    return new \Todo\Utils\TaskCounter($app);
+});
+
 require 'config/routes.php';
 
 return $app;

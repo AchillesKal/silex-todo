@@ -35,3 +35,7 @@
 .green{
     color: #59CA59;
 }
+
+.error-message{
+    padding: 15px;
+}

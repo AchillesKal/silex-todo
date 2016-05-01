@@ -13,13 +13,14 @@ class TodoController
     public function listAction(Request $request, Application $app)
     {
         $tasks = $app['repository.task']->findAll();
+        $tasksNumber = $app['repository.task']->count();
 
         $form = $app['form.factory']->createBuilder(TodoType::class)
             ->getForm();
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid() && $app['task.counter']->check($tasksNumber)) {
 
             $task = $form->getData();
             $app['repository.task']->save($task);

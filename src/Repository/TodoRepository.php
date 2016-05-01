@@ -70,6 +70,12 @@ class TodoRepository
         return $this->db->delete('tasks', array('id' => $task->getId()));
     }
 
+    public function count()
+    {
+        $count = $this->db->fetchColumn('SELECT COUNT(id) FROM tasks');
+        return $count;
+    }
+
     private function buildTask($taskData)
     {
         $task = new Task();

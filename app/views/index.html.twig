@@ -4,6 +4,12 @@
 
 {% block content %}
 
+    {% for alert in app.session.flashbag.get('warning') %}
+        <div class="error-message bg-danger">
+            {{ alert }}
+        </div>
+    {% endfor %}
+
     <h1 class="text-center">Simple Silex Todo App</h1>
     <form class="todo-form" method="post">
         {{ form_errors(form) }}
