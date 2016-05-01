@@ -16,6 +16,16 @@ class TodoControllerTest extends WebTestCase
         $this->assertTrue($client->getResponse()->isSuccessful());
     }
 
+    public function testAboutAction()
+    {
+        $client = $this->createClient();
+
+        $client->request('GET', '/about');
+
+        $this->assertTrue($client->getResponse()->isSuccessful());
+    }
+
+
     public function createApplication()
     {
 
