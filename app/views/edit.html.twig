@@ -3,6 +3,30 @@
 {% block title %}{{ task.name }} - edit | SilexTodo - AchillesKal{% endblock %}
 
 {% block content %}
-    {{ form(editForm) }}
+    <h1>Edit: {{ task.name }}</h1>
+
+    {{ form_start(editForm) }}
+    {{ form_errors(editForm) }}
+        <div class="form-group">
+            {{ form_label(editForm.name) }}
+            {{ form_errors(editForm.name) }}
+            {{ form_widget(editForm.name, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(editForm.description) }}
+            {{ form_errors(editForm.description) }}
+            {{ form_widget(editForm.description, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_errors(editForm.is_done) }}
+            {{ form_widget(editForm.is_done, {'attr': {'class': ''}}) }}
+            {{ form_label(editForm.is_done) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(editForm.edit, {'attr': {'class': 'btn btn-warning'}}) }}
+            <a href="{{ path('delete_todo', {'id': task.id}) }}" class="btn btn-danger">Delete</a>
+        </div>
+    {{ form_end(editForm) }}
+
 {% endblock %}
 
