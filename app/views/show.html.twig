@@ -5,7 +5,13 @@
 {% block content %}
     <h1>{{ task.name }}</h1>
     <div>{{ task.description }}</div>
-    <div>is done: {{ task.isDone }}</div>
+    <div>
+        {% if task.isDone == 0 %}
+            The task is not completed <i class="fa fa-times fa-2x red" aria-hidden="true"></i>
+        {% else %}
+            The task is completed <i class="fa fa-check fa-2x green" aria-hidden="true"></i>
+        {% endif %}
+    </div>
 
     <a href="{{ path('edit_todo', {'id': task.id}) }}" class="btn btn-warning">Edit</a>
     <a href="{{ path('delete_todo', {'id': task.id}) }}" class="btn btn-danger">Delete</a>

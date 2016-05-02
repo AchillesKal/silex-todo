@@ -61,7 +61,7 @@ class TodoController
 
             $app['repository.task']->save($task);
 
-            $app['session']->getFlashBag()->add('success', 'Task "'.$data->getName().'" edited successfully');
+            $app['session']->getFlashBag()->add('success', 'Task "'.$data->getName().'" edited successfully!');
 
             return $app->redirect($app['url_generator']->generate('homepage'));
         }
@@ -74,6 +74,8 @@ class TodoController
         $task = $app['repository.task']->findOneById($id);
 
         $app['repository.task']->delete($task);
+
+        $app['session']->getFlashBag()->add('success', 'Task "'.$task->getName().'" deleted successfully!');
 
         return $app->redirect($app['url_generator']->generate('homepage'));
     }
