@@ -61,6 +61,8 @@ class TodoController
 
             $app['repository.task']->save($task);
 
+            $app['session']->getFlashBag()->add('success', 'Task "'.$data->getName().'" edited successfully');
+
             return $app->redirect($app['url_generator']->generate('homepage'));
         }
 

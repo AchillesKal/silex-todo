@@ -4,10 +4,12 @@
 
 {% block content %}
 
-    {% for alert in app.session.flashbag.get('warning') %}
-        <div class="error-message bg-danger">
-            {{ alert }}
-        </div>
+    {% for label, flashes in app.session.flashbag.all %}
+        {% for flash in flashes %}
+            <div class="alert alert-{{ label }}">
+                {{ flash }}
+            </div>
+        {% endfor %}
     {% endfor %}
 
     <h1 class="text-center">Simple Silex Todo App</h1>

@@ -37,7 +37,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 ));
 
 $app['task.counter'] = $app->share(function ($app) {
-    return new \Todo\Utils\TaskCounter($app);
+    return new \Todo\Utils\TaskCounter($app['session']);
 });
 
 require 'config/routes.php';
