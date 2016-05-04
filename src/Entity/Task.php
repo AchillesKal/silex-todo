@@ -11,7 +11,7 @@ class Task
 
     private $description = 'No description';
 
-    private $is_done = false;
+    private $is_done = 0;
 
     /**
      * @return mixed
@@ -66,7 +66,7 @@ class Task
      */
     public function getIsDone()
     {
-        if($this->is_done == "0"){
+        if($this->is_done == 0){
             return false;
         }
         return true;
