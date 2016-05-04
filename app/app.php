@@ -30,7 +30,7 @@ $app['repository.task'] = $app->share(function ($app) {
 });
 
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
-    'monolog.logfile' => __DIR__.'/../var/development.log',
+    'monolog.logfile' => __DIR__.'/../var/logs.log',
 ));
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => __DIR__.'/../app/views',
