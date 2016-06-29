@@ -20,15 +20,19 @@ class TaskCounterTest extends WebTestCase
         $this->assertTrue($result);
     }
 
-    public function testCheckReturnsFalseWhenNumbeMoreThanTen()
+    public function testCheckReturnsFalseWhenNumbeMoreThanTenAndWritesFlashMessage()
     {
         $app = $this->createApplication();
         $number = 11;
+        $expectedWarningMessage ='You can\'t have more than 10 tasks';
 
         $taskCounter = new TaskCounter($app['session']);
 
         $result = $taskCounter->check($number);
 
+        $actualWarningMessage = $app['session']->getFlashBag()->get('warning')[0];
+
+        $this->assertEquals($expectedWarningMessage, $actualWarningMessage);
         $this->assertFalse($result);
     }
 
@@ -42,21 +46,6 @@ class TaskCounterTest extends WebTestCase
         $result = $taskCounter->check($number);
 
         $this->assertFalse($result);
-    }
-
-    public function testCheckReturnsFalseWrittesToSession()
-    {
-        $app = $this->createApplication();
-        $number = 12;
-        $expectedWarningMessage ='You can\'t have more than 10 tasks';
-
-        $taskCounter = new TaskCounter($app['session']);
-
-        $taskCounter->check($number);
-
-        $actualWarningMessage = $app['session']->getFlashBag()->get('warning')[0];
-
-        $this->assertEquals($expectedWarningMessage, $actualWarningMessage);
     }
 
     public function createApplication()
