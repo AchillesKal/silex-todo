@@ -50,6 +50,7 @@ class TodoControllerTest extends WebTestCase
         $client->request('GET', '/about');
 
         $this->assertTrue($client->getResponse()->isSuccessful());
+
     }
 
 
